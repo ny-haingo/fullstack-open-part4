@@ -1,20 +1,12 @@
 const http = require("http");
 const config = require("./utils/config");
-const logger = require('./utils/logger')
+const logger = require("./utils/logger");
 const express = require("express");
+const Blog = require("./models/blog");
 const app = express();
 const cors = require("cors");
+
 const mongoose = require("mongoose");
-
-const blogSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  url: String,
-  likes: Number,
-});
-
-const Blog = mongoose.model("Blog", blogSchema);
-
 mongoose.connect(config.MONGODB_URI);
 
 app.use(cors());
