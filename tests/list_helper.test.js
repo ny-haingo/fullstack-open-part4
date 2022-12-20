@@ -28,8 +28,8 @@ describe("total likes", () => {
   });
 });
 
-describe("most likes", () => {
-  test("when one author has the most", () => {
+describe("most liked blog", () => {
+  test("one author thas the most likes", () => {
     const result = favoriteBlog(testBlogs);
     const mostPopular = {
       title: "The Selfish Gene",
