@@ -28,14 +28,12 @@ describe("total likes", () => {
   });
 });
 
-describe("most liked blog", () => {
-  test("one author thas the most likes", () => {
-    const result = favoriteBlog(testBlogs);
-    const mostPopular = {
-      title: "The Selfish Gene",
-      author: "Richard Dawkins",
-      likes: 30,
-    };
-    expect(result).toEqual(mostPopular);
-  });
+test(" the most liked blog", () => {
+  const result = favoriteBlog(testBlogs);
+  const mostPopular = {
+    title: "The Selfish Gene",
+    author: "Richard Dawkins",
+    likes: 30,
+  };
+  expect(result).toEqual(mostPopular);
 });
