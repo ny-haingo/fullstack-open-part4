@@ -4,6 +4,8 @@ const app = require("../app");
 const testBlogs = require("../utils/testBlogs");
 const Blog = require("../models/blog");
 
+const { info } = require("../utils/logger");
+
 const api = supertest(app);
 
 beforeEach(async () => {
@@ -28,6 +30,11 @@ describe("The right HTTP request", () => {
 
     expect(response.body).toHaveLength(testBlogs.length);
   });
+});
+
+test("the unique identifier property of the blog posts is named id", () => {
+  const newBlog = new Blog();
+  expect(newBlog.id).toBeDefined();
 });
 
 afterAll(() => {

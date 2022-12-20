@@ -5,9 +5,7 @@ const testBlogs = require("../utils/testBlogs");
 const listWithOneBlog = [testBlogs[0]];
 
 test("dummy returns one", () => {
-  const blogs = [];
-
-  const result = dummy(blogs);
+  const result = dummy([]);
   expect(result).toBe(1);
 });
 
