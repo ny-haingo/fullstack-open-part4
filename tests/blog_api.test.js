@@ -4,8 +4,6 @@ const app = require("../app");
 const testBlogs = require("../utils/testBlogs");
 const Blog = require("../models/blog");
 
-const { info } = require("../utils/logger");
-
 const api = supertest(app);
 
 beforeEach(async () => {
