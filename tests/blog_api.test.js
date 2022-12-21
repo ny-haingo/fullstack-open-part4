@@ -79,7 +79,7 @@ describe("post tests", () => {
       url: "url",
     };
 
-    await api.post("/api/blogs").send(newBlog).expect(404);
+    await api.post("/api/blogs").send(newBlog).expect(400);
   });
 });
 

@@ -14,8 +14,15 @@ blogsRouter.post("/", async (request, response) => {
   const blog = new Blog({
     title: body.title,
     author: body.author,
+    url: body.url,
     likes: body.like || 0,
   });
+
+  if (!body.title || !body.url) {
+    return response.status(400).json({
+      error: "title or url missing",
+    });
+  }
 
   const savedBlog = await blog.save();
   response.status(201).json(savedBlog);

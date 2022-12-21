@@ -31,6 +31,7 @@ test(" the most liked blog", () => {
   const mostPopular = {
     title: "The Selfish Gene",
     author: "Richard Dawkins",
+    url: "https://www.goodreads.com/book/show/5457?ac=1&from_search=true&qid=4Z0xIwL1vV&rank=1",
     likes: 30,
   };
   expect(result).toEqual(mostPopular);
