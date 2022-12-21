@@ -72,6 +72,15 @@ describe("post tests", () => {
     );
     expect(responseNewBlog.likes).toBe(0);
   });
+
+  test("verifies that if the title or url properties are missing from the request data", async () => {
+    const newBlog = {
+      author: "Miantsa",
+      url: "url",
+    };
+
+    await api.post("/api/blogs").send(newBlog).expect(404);
+  });
 });
 
 describe("id validity", () => {
