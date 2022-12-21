@@ -14,7 +14,7 @@ blogsRouter.post("/", async (request, response) => {
   const blog = new Blog({
     title: body.title,
     author: body.author,
-    like: body.like || 0,
+    likes: body.like || 0,
   });
 
   const savedBlog = await blog.save();

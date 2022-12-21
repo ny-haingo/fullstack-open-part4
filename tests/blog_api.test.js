@@ -4,6 +4,8 @@ const app = require("../app");
 const testBlogs = require("../utils/testBlogs");
 const Blog = require("../models/blog");
 
+const { info } = require("../utils/logger");
+
 const api = supertest(app);
 
 beforeEach(async () => {
@@ -51,9 +53,30 @@ describe("post tests", () => {
     expect(response.body).toHaveLength(testBlogs.length + 1);
     expect(titles).toContain("We need love");
   });
+
+  test("the likes property is missing from the request, it will default to the value 0", async () => {
+    const newBlog = {
+      title: "The missing like",
+      author: "Miantsa",
+      url: "url",
+    };
+
+    await api
+      .post("/api/blogs")
+      .send(newBlog)
+      .expect(201)
+      .expect("Content-Type", /application\/json/);
+
+    const response = await api.get("/api/blogs");
+
+    const responseNewBlog = response.body.find(
+      (object) => object.title === "The missing like"
+    );
+    expect(responseNewBlog.likes).toBe(0);
+  });
 });
 
-describe("validity", () => {
+describe("id validity", () => {
   test("the unique identifier property of the blog posts is named id", () => {
     const newBlog = new Blog();
     expect(newBlog.id).toBeDefined();
