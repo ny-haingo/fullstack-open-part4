@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const supertest = require("supertest");
 const app = require("../app");
-const testBlogs = require("../utils/testBlogs");
+const helper = require("./test_helper");
 const Blog = require("../models/blog");
 
 const api = supertest(app);
@@ -9,7 +9,7 @@ const api = supertest(app);
 beforeEach(async () => {
   await Blog.deleteMany({});
 
-  const BlogObjects = testBlogs.map((blog) => new Blog(blog));
+  const BlogObjects = helper.testBlogs.map((blog) => new Blog(blog));
   const promiseArray = BlogObjects.map((blog) => blog.save());
   await Promise.all(promiseArray);
 });
@@ -25,7 +25,7 @@ describe("get tests", () => {
   test("all blogs are returned", async () => {
     const response = await api.get("/api/blogs");
 
-    expect(response.body).toHaveLength(testBlogs.length);
+    expect(response.body).toHaveLength(helper.testBlogs.length);
   });
 });
 
@@ -48,7 +48,7 @@ describe("post tests", () => {
 
     const titles = response.body.map((r) => r.title);
 
-    expect(response.body).toHaveLength(testBlogs.length + 1);
+    expect(response.body).toHaveLength(helper.testBlogs.length + 1);
     expect(titles).toContain("We need love");
   });
 
