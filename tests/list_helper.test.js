@@ -1,8 +1,7 @@
 const { dummy, totalLikes, favoriteBlog } = require("../utils/list_helper");
 
-const testBlogs = require("../utils/testBlogs");
-
-const listWithOneBlog = [testBlogs[0]];
+const helper = require('./test_helper')
+const listWithOneBlog = [helper.testBlogs[0]];
 
 test("dummy returns one", () => {
   const result = dummy([]);
@@ -21,13 +20,13 @@ describe("total likes", () => {
   });
 
   test("of a bigger list is calculated right", () => {
-    const result = totalLikes(testBlogs);
+    const result = totalLikes(helper.testBlogs);
     expect(result).toBe(142);
   });
 });
 
 test(" the most liked blog", () => {
-  const result = favoriteBlog(testBlogs);
+  const result = favoriteBlog(helper.testBlogs);
   const mostPopular = {
     title: "The Selfish Gene",
     author: "Richard Dawkins",

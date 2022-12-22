@@ -1,4 +1,4 @@
-const blogs = [
+const testBlogs = [
   {
     title: "Canonical string reduction",
     author: "Edsger W. Dijkstra",
@@ -49,4 +49,4 @@ const blogs = [
   },
 ];
 
-module.exports = blogs;
+module.exports = { testBlogs };
