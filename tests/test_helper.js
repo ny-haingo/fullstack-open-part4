@@ -49,4 +49,17 @@ const testBlogs = [
   },
 ];
 
-module.exports = { testBlogs };
+const testUsers = [
+  {
+    usename: "ny-andry",
+    name: "nyandry",
+    password: "verycomplicatedpassword",
+  },
+  {
+    usename: "gloriarah",
+    name: "raharim",
+    password: "simplepassword",
+  },
+];
+
+module.exports = { testBlogs, testUsers };
