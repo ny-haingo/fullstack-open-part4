@@ -1,7 +1,6 @@
 // Route handlers
 const blogsRouter = require("express").Router();
 const Blog = require("../models/blog");
-const { info } = require("../utils/logger");
 
 blogsRouter.get("/", async (request, response) => {
   const blogs = await Blog.find({});
@@ -9,7 +8,6 @@ blogsRouter.get("/", async (request, response) => {
 });
 
 blogsRouter.post("/", async (request, response) => {
-  // const blog = new Blog(request.body);
   const body = request.body;
 
   const blog = new Blog({
