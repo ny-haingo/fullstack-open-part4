@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs/ HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Ny namako",
-    "author": "Ny",
+    "title": "Second blog",
+    "author": "Anon-kun",
     "url": "url",
-    "likes": 
+    "likes": 0
 }
