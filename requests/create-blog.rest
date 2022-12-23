@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs/ HTTP/1.1
 content-type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkZpcnN0IFVzZXIiLCJpZCI6IjYzYTViOTg4MGRkYTg2ODMxMDQyOWRlMSIsImlhdCI6MTY3MTgwNzcxNn0.F2-mso-sKbxwG8bT-RYJyXOowYH3kEntqTtyFg8au70
+authorization: bearer
 
 {
-    "title": "coks blog",
+    "title": "Yet another blog",
     "author": "Anon-kun",
-    "url": "url",
+    "url": "blog-url",
     "likes": 0
 }
