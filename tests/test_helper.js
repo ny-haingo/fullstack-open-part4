@@ -51,13 +51,13 @@ const testBlogs = [
 
 const testUsers = [
   {
-    usename: "ny-andry",
-    name: "nyandry",
+    username: "ny-andry",
+    name: "Ny Andry",
     password: "verycomplicatedpassword",
   },
   {
-    usename: "gloriarah",
-    name: "raharim",
+    username: "another",
+    name: "Another Person",
     password: "simplepassword",
   },
 ];

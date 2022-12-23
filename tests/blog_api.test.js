@@ -14,7 +14,7 @@ beforeEach(async () => {
   await Promise.all(promiseArray);
 });
 
-describe("get tests", () => {
+describe("get tests for blog", () => {
   test("blogs are returned as json", async () => {
     await api
       .get("/api/blogs")
@@ -29,7 +29,7 @@ describe("get tests", () => {
   });
 });
 
-describe("post tests", () => {
+describe("post tests for blog", () => {
   test("a valid blog can be added", async () => {
     const newBlog = {
       title: "We need love",
@@ -83,7 +83,7 @@ describe("post tests", () => {
   });
 });
 
-describe("id validity", () => {
+describe("id validity for blog", () => {
   test("the unique identifier property of the blog posts is named id", () => {
     const newBlog = new Blog();
     expect(newBlog.id).toBeDefined();
