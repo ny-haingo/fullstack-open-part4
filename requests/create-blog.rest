@@ -1,6 +1,6 @@
 POST http://localhost:3003/api/blogs/ HTTP/1.1
 content-type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzYTYwMTE4ZjE1MGNmN2EyZmE1MzUwNyIsImlhdCI6MTY3MTgyMzcwMX0.bqkoFQPdWcCZBJrrWrQ-ZeuFUHWMXh2kND45HIvgZZk
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzYTYwMTE4ZjE1MGNmN2EyZmE1MzUwNyIsImlhdCI6MTY3MTg4OTgzM30.ot5B7dObKhs5Ds9YGkSzBoc4KE9d8zNkhFhUGz9-U0M
 
 {
     "title": "Yet another blog four",
