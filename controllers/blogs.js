@@ -8,6 +8,14 @@ blogsRouter.get("/", async (request, response) => {
   response.json(blogs);
 });
 
+blogsRouter.get("/:id", async (request, response) => {
+  const blogs = await Blog.findById(request.params.id).populate("user", {
+    username: 1,
+    name: 1,
+  });
+  response.json(blogs);
+});
+
 blogsRouter.post("/", async (request, response) => {
   const body = request.body;
   const user = request.user;
@@ -33,8 +41,22 @@ blogsRouter.post("/", async (request, response) => {
 });
 
 blogsRouter.delete("/:id", async (request, response) => {
-  await Blog.findByIdAndRemove(request.params.id);
-  response.status(204).end();
+  const blog = await Blog.findById(request.params.id);
+  if (blog) {
+    const user = request.user;
+    if (user) {
+      if (blog.user.toString() === user._id.toString()) {
+        await blog.remove();
+        response.status(204).end();
+      } else {
+        return response.status(401).json({ error: error.message });
+      }
+    } else {
+      return response.status(401).json({ error: error.message });
+    }
+  } else {
+    return response.status(404);
+  }
 });
 
 blogsRouter.put("/:id", async (request, response) => {
