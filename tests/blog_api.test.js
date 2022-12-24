@@ -3,14 +3,18 @@ const supertest = require("supertest");
 const app = require("../app");
 const helper = require("./test_helper");
 const Blog = require("../models/blog");
+const User = require("../models/user");
 
 const api = supertest(app);
 
 beforeEach(async () => {
   await Blog.deleteMany({});
+  await User.deleteMany({});
 
   const BlogObjects = helper.testBlogs.map((blog) => new Blog(blog));
   const promiseArray = BlogObjects.map((blog) => blog.save());
+  await api.post("/api/users").send(helper.testUsers[0]);
+
   await Promise.all(promiseArray);
 });
 
@@ -37,9 +41,17 @@ describe("post tests for blog", () => {
       url: "url",
       like: 0,
     };
+    const user = helper.testUsers[0];
+
+    const userAuth = await api
+      .post("/api/login")
+      .set("Content-type", "application/json")
+      .send({ username: user.username, password: user.password });
 
     await api
       .post("/api/blogs")
+      .set("Content-type", "application/json")
+      .set("Authorization", `bearer ${userAuth.body.token}`)
       .send(newBlog)
       .expect(201)
       .expect("Content-Type", /application\/json/);
@@ -58,9 +70,17 @@ describe("post tests for blog", () => {
       author: "Miantsa",
       url: "url",
     };
+    const user = helper.testUsers[0];
+
+    const userAuth = await api
+      .post("/api/login")
+      .set("Content-type", "application/json")
+      .send({ username: user.username, password: user.password });
 
     await api
       .post("/api/blogs")
+      .set("Content-type", "application/json")
+      .set("Authorization", `bearer ${userAuth.body.token}`)
       .send(newBlog)
       .expect(201)
       .expect("Content-Type", /application\/json/);
@@ -78,8 +98,19 @@ describe("post tests for blog", () => {
       author: "Miantsa",
       url: "url",
     };
+    const user = helper.testUsers[0];
 
-    await api.post("/api/blogs").send(newBlog).expect(400);
+    const userAuth = await api
+      .post("/api/login")
+      .set("Content-type", "application/json")
+      .send({ username: user.username, password: user.password });
+
+    await api
+      .post("/api/blogs")
+      .set("Content-type", "application/json")
+      .set("Authorization", `bearer ${userAuth.body.token}`)
+      .send(newBlog)
+      .expect(400);
   });
 });
 
