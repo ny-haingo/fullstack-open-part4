@@ -1,9 +1,0 @@
-PUT http://localhost:3003/api/blogs/63a1fa292ed30264be9f7ca3 HTTP/1.1
-content-type: application/json
-
-{
-    "title": "Ny namako",
-    "author": "Ny",
-    "url": "url",
-    "likes": 3
-}
