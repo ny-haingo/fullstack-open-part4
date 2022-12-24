@@ -121,6 +121,23 @@ describe("id validity for blog", () => {
   });
 });
 
+describe("no token should fail test", () => {
+  test("no token test ", async () => {
+    const newBlog = {
+      title: "We need love",
+      author: "Miantsa",
+      url: "url",
+      like: 0,
+    };
+
+    await api
+      .post("/api/blogs")
+      .set("Content-type", "application/json")
+      .send(newBlog)
+      .expect(401);
+  });
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
